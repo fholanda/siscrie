@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.gov.serpro.sri</groupId>
+	<artifactId>sri-dominio</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>sri-dominio</name>
+
+	<url>http://maven.apache.org</url>
+
+	<repositories>
+		<repository>
+			<id>serpro-componentes-corporativos</id>
+			<url>http://nexus.aic.serpro/content/repositories/componentes-corporativos</url>
+		</repository>
+		<repository>
+			<id>component-internal</id>
+			<url>http://nexus.aic.serpro/content/repositories/archiva4-component-internal</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>br.gov.frameworkdemoiselle</groupId>
+			<artifactId>demoiselle-jpa</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>br.gov.frameworkdemoiselle</groupId>
+			<artifactId>demoiselle-core</artifactId>
+			<version>2.5.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>br.gov.frameworkdemoiselle</groupId>
+			<artifactId>demoiselle-jpa</artifactId>
+			<version>2.5.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>sri-dominio</finalName>
+	</build>
+</project>

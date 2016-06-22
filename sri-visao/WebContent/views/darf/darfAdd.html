@@ -1,0 +1,198 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-11 col-sm-offset-1">
+				<ol class="breadcrumb">
+					<li><a href="#dashboard">Início</a></li>
+					<li class="active">DARF</li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-11 col-sm-offset-1">
+				<div id="loaderDiv" loader > 
+		    			<img src="./images/ajax-loader.gif" class="ajax-loader"/>
+				</div>
+				<div class="page-header">
+					<h1>{{title}}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<article >
+  <div class="container">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h2>Dados Gerais</h2>
+                <p><i>(<span class="text-danger">*</span>) Campo de preenchimento obrigatório</i></p>
+                <form name="form" novalidate data-ng-init="carregarTelaNovoDARF()" >
+                
+					<!-- LINHA  -->								
+                
+       				<div class="row">
+						<div class="col-sm-5">
+							<div class="form-group">
+								<label class="control-label" for="numero_darf"  >Nº DARF</label>
+								<input name="numero_darf" type="text" class="form-control" ng-model="darf.nrDARF" max-length="12" required>
+								<span style="color:red" ng-show="form.numero_darf.$touched && form.numero_darf.$invalid">
+								<span ng-show="form.numero_darf.$touched && form.numero_darf.$invalid">O campo Nº DARF é obrigatório.</span>								
+							</div>
+						</div>
+                        <div class="col-sm-7">
+							<div class="form-group">
+								<label for="cnpj" class="control-label" >CNPJ</label>
+								<input name="cnpj" type="text" class="form-control" ng-model="darf.cnpj" ui-mask="99.999.999/9999-99">
+							</div>
+						</div>
+						
+					</div>
+										
+							
+					<!-- LINHA  -->
+							
+					<div class="form-group">
+						<label for="nome" class="control-label" >Nome</label>
+						<input name="nome" type="text" class="form-control" ng-model="darf.nome" 
+											placeholder="Informe o nome" maxlength="255" >
+						<div ng-show="form.$submitted || form.nome.$touched" class="has-error">
+						<div class="help-block" 
+								ng-show="form.nome.$error.required">Informe o nome da empresa</div>
+						</div>
+					</div>
+							
+					<!-- LINHA  -->
+							
+					<div class="row">		
+						<div class="col-sm-4" for="cod_retencao" >
+							<div class="form-group">
+								<label for="cod_retencao" class="control-label" >Código de Retenção</label> 
+								<select name="cod_retencao" ng-model="darf.retencao" class="form-control " ng-options="retencao.codigo for retencao in retencaoList track by retencao.codigo">
+									 <option value="">Selecione</option>
+						        </select>
+							</div>
+						</div>						
+						<div class="col-sm-8">
+							<div class="form-group">
+								<label class="control-label" for="descricao" >Descrição</label> 
+								<input name="descricao" type="text" class="form-control"
+								ng-model="darf.retencao.descricao" readonly="true" >								
+							</div>
+						</div>								
+					</div>
+
+					<!-- LINHA  -->
+							
+					<div class="row">		
+						<div class="col-sm-4" for="uf" >
+							<div class="form-group">
+								<label for="uf" class="control-label" >UF</label> 
+								<select name="uf" ng-model="darf.uf" class="form-control " ng-options="uf.descricao for uf in ufList track by uf.id">
+									 <option value="">Selecione</option>
+						        </select>
+							</div>
+						</div>						
+						<div class="col-sm-4" for="municipio" >
+							<div class="form-group">
+								<label for="municipio" class="control-label" >Município</label> 
+								<select name="municipio" ng-model="darf.municipio" class="form-control " ng-options="municipio.descricao for municipio in municipioList track by municipio.id">
+									 <option value="">Selecione</option>
+						        </select>
+							</div>
+						</div>						
+					</div>
+					
+					<!-- LINHA  -->
+							
+					<div class="row">		
+						<div class="col-sm-4" for="tipo" >
+							<div class="form-group">
+								<label for="tipo" class="control-label" >UF</label> 
+								<select name="tipo" ng-model="darf.tipo" class="form-control " ng-options="tipo.descricao for tipo in tipoList track by tipo.id">
+									 <option value="">Selecione</option>
+						        </select>
+							</div>
+						</div>						
+						<div class="col-sm-4" for="risco" >
+							<div class="form-group">
+								<label for="risco" class="control-label" >Risco</label> 
+								<select name="risco" ng-model="darf.risco" class="form-control " ng-options="risco.descricao for risco in riscoList track by risco.id">
+									 <option value="">Selecione</option>
+						        </select>
+							</div>
+						</div>						
+					</div>
+
+					<!-- LINHA  -->								
+					
+					<div class="form-group">
+						<label for="valor" class="control-label" >Valor</label>							
+							<input name="valor" type="text" class="form-control" ng-model="darf.valor" ui-money-mask="2">																					
+							<div ng-show="form.$submitted || form.valor.$touched" class="has-error">
+								<div class="help-block" ng-show="form.valor.$error.required">Informe o valor</div>
+							</div>
+					</div>
+					
+					<!-- LINHA  -->			
+					<div class="row">		
+						<div class="col-sm-3">
+							<div class="form-group">
+								<label for="dt_vencimento" class="control-label" >Data de vencimento</label>			
+								<p class="input-group">
+									<input type="text" class="form-control" name="dt_vencimento"
+							                uib-datepicker-popup="dd/MM/yyyy"           
+									        ng-model="darf.dtVencimento" 									        
+									        is-open="popup1.opened" 
+									        datepicker-options="dateOptions"		        
+									        close-text="Close" 
+									        alt-input-formats="dd/MM/yyyy" 
+									        />
+									<span class="input-group-btn">
+									    <button type="button" class="btn btn-default" ng-click="open1()">
+									    	<i class="glyphicon glyphicon-calendar"></i>
+									    </button>
+									</span>									
+								</p>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="form-group">
+								<label for="periodo_apuracao" class="control-label" >Período de apuração</label>
+								 <p class="input-group">
+									<input type="text" class="form-control" name="periodo_apuracao"
+							                uib-datepicker-popup="dd/MM/yyyy"           
+									        ng-model="darf.dtApuracao" 									        
+									        is-open="popup2.opened" 
+									        datepicker-options="dateOptions"		        
+									        close-text="Close" 
+									        alt-input-formats="dd/MM/yyyy" 
+									        />
+									<span class="input-group-btn">
+									    <button type="button" class="btn btn-default" ng-click="open2()">
+									    	<i class="glyphicon glyphicon-calendar"></i>
+									    </button>
+									</span>									
+								</p>
+							</div>
+						</div>
+					</div>					
+				</form>
+				<hr>
+				<alerts></alerts>
+				
+				<div class="text-right">
+					<button id="buttonCancelar" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+					<button id="buttonSalvar" type="submit" class="btn btn-success" ng-click="save()" >Salvar</button>
+				</div>
+				</form>				
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</article>

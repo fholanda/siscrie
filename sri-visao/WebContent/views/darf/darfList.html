@@ -1,0 +1,42 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-11 col-sm-offset-1">
+				<ol class="breadcrumb">
+					<li><a href="#dashboard">Início</a></li>
+					<li class="active">DARF</li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-11 col-sm-offset-1">
+				<div id="loaderDiv" loader > 
+	    			<img src="./images/ajax-loader.gif" class="ajax-loader"/>
+				</div>
+				<div class="page-header">
+					<h1>{{title}}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<article>
+  <div class="container">
+        <div class="panel">
+          <div class="panel-body">
+           	<div class="row">
+           		<div class="col-sm-10 col-sm-offset-1">
+					<button class="btn btn-primary" data-ng-click="new()">
+						<i class="glyphicon glyphicon-plus-sign"></i> Novo
+					</button>
+					<br />
+					<br />
+					<div class="gridStyle" ng-grid="gridOptions"></div>					
+					<alerts></alerts>
+				</div>
+			</div>
+	  	</div>
+	</div>
+  </div>
+</article>

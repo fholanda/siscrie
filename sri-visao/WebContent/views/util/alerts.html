@@ -1,0 +1,8 @@
+<div>
+	<div ng-repeat="alert in alerts" class="alert alert-{{alert.type}} alert-dismissable  animated fadeInDown">
+	   <i class="fa fa-check" aria-hidden="true" ng-show="alert.type == 'success'"></i>
+	   <i class="fa fa-exclamation" aria-hidden="true" ng-show="alert.type == 'danger'"></i>
+	    &nbsp;{{alert.msg}}
+	</div>	
+	
+</div>
